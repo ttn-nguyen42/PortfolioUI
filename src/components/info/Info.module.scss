@@ -1,7 +1,120 @@
 @import '../../styles.scss';
 
 .body {
-  background-color: black;
   width: 100%;
-  height: 10rem;
+}
+
+.mobile {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  width: 100%;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  .profile {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    align-self: flex-start;
+  }
+  .name-and-bio {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    height: 100%;
+    align-self: flex-start;
+    .name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .bio {
+      font-size: 0.75rem;
+    }
+  }
+  .linkedin-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    align-self: center;
+  }
+  @include desktop {
+    display: none;
+  }
+  @include tablet {
+    display: none;
+  }
+}
+
+.desktop {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  @include mobile {
+    display: none;
+  }
+  .center-and-left-align {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    .profile {
+      width: 10rem;
+      height: 10rem;
+      border-radius: 50%;
+    }
+    .name {
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    .bio {
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    .icon {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      width: 1rem;
+    }
+    .icon-pair {
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      display: flex;
+      width: 100%;
+      justify-content: start;
+      align-items: center;
+      span {
+        margin-left: 1.5rem;
+        font-weight: 500;
+        color: #494e52;
+      }
+      .link {
+        font-style: normal;
+        display: inline-block;
+        position: relative;
+        transition: color 0.25s ease-out;
+        &:hover {
+          color: black;
+        }
+        &:hover::after {
+          transform: scaleX(1);
+          transform-origin: bottom left;
+        }
+      }
+      .link:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        bottom: 0;
+        left: 0;
+        background-color: #494e52;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+    }
+  }
 }

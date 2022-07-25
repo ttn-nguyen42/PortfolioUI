@@ -6,7 +6,7 @@ import Navigation from '../navbar/Navigation';
 
 import s from './PageTemplate.module.scss';
 
-export default function PageTemplate({ body }: PageTemplateProps) {
+export default function PageTemplate({ children }: PageTemplateProps) {
   return (
     <>
       <section className={s['wrapper']}>
@@ -15,7 +15,7 @@ export default function PageTemplate({ body }: PageTemplateProps) {
           <div className={s['info']}>
             <Info />
           </div>
-          <div className={s['content']}>{body}</div>
+          <div className={s['content']}>{children}</div>
         </Container>
         <div className={s['footer']}>
           <Footer />
@@ -26,5 +26,5 @@ export default function PageTemplate({ body }: PageTemplateProps) {
 }
 
 export interface PageTemplateProps {
-  body: React.ReactNode;
+  children: React.ReactNode;
 }
