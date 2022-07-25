@@ -1,0 +1,34 @@
+@import '../../styles.scss';
+
+.footer {
+  @include footer;
+}
+
+.wrapper {
+  @include wrapper;
+}
+
+.body-wrapper {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  @include tablet {
+    display: flex;
+    flex-direction: row;
+    .info {
+      flex: 2.5;
+    }
+    .content {
+      flex: 7.5;
+    }
+  }
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    .info {
+      flex: 2;
+    }
+    .content {
+      flex: 8;
+    }
+  }
+}
