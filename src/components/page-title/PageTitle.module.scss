@@ -1,0 +1,8 @@
+@import '../../styles.scss';
+
+.title {
+  font-weight: 600;
+  @include mobile {
+    margin-bottom: 1rem;
+  }
+}

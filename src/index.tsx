@@ -11,6 +11,10 @@ import Activities from './routes/activities/Activities';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Contact from './routes/contact/Contact';
 
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+import Certificates from './routes/certificates/Certificates';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
@@ -23,6 +27,7 @@ root.render(
         <Route path='/resume' element={<Resume />} />
         <Route path='/projects' element={<Projects />} />
         <Route path='/posts' element={<Posts />} />
+        <Route path='/certificates' element={<Certificates />} />
         <Route path='/activities' element={<Activities />} />
         <Route path='/contact' element={<Contact />} />
       </Routes>

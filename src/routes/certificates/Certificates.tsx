@@ -1,17 +1,16 @@
 import { useEffect } from 'react';
-import Navigation from '../../components/navbar/Navigation';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
 
-import s from './Posts.module.scss';
+import s from './Certificates.module.scss';
 
-export default function Posts() {
+export default function Certificates() {
   useEffect(() => {
-    document.title = 'Posts';
+    document.title = 'Certificates';
   });
   return (
     <PageTemplate>
-      <PageTitle>Posts</PageTitle>
+      <PageTitle>Certificates</PageTitle>
     </PageTemplate>
   );
 }

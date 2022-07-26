@@ -1,0 +1,8 @@
+@import '../../styles.scss';
+
+.list {
+  :not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+  margin: 0;
+}

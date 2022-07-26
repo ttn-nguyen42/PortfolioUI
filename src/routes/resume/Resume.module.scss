@@ -1,0 +1,11 @@
+@import '../../styles.scss';
+
+:global(.popover-arrow) {
+  display: none !important;
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
