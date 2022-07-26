@@ -11,6 +11,9 @@ import Activities from './routes/activities/Activities';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Contact from './routes/contact/Contact';
 
+import 'swiper/css';
+import 'swiper/css/scrollbar';
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

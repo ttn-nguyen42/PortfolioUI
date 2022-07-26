@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { Button } from 'react-bootstrap';
+import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
 
@@ -25,6 +27,12 @@ export default function About() {
         dolor. Maecenas aliquam pharetra massa. Proin id sapien nisi. Cras
         blandit urna vitae dolor iaculis euismod sed eu enim.
       </p>
+      <PagePoint title={'Utilities'}>
+        <div className={s['utilities']}>
+          <span>Please find all attached documents and contents here:</span>
+          <Button variant='dark'>Download CV in PDF</Button>
+        </div>
+      </PagePoint>
     </PageTemplate>
   );
 }

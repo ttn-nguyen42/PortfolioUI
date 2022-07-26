@@ -1,0 +1,17 @@
+@import '../../styles.scss';
+
+.title {
+  font-weight: 500;
+}
+
+.point {
+  margin-top: 1rem;
+  @include mobile {
+    margin-top: 0.75rem;
+  }
+}
+
+.divider {
+  margin: 0.75rem 0;
+  height: 1.5px;
+}

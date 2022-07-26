@@ -4,9 +4,6 @@ import s from './Info.module.scss';
 import {
   faAt,
   faLocationArrow,
-  faMailBulk,
-  faMailForward,
-  faMailReply,
   faSpider,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
