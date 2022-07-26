@@ -21,6 +21,9 @@ export default function Navigation() {
               <LinkContainer to={'/projects'}>
                 <Nav.Link>Projects</Nav.Link>
               </LinkContainer>
+              <LinkContainer to={'/certificates'}>
+                <Nav.Link>Certificates</Nav.Link>
+              </LinkContainer>
               <LinkContainer to={'/activities'}>
                 <Nav.Link>Activities</Nav.Link>
               </LinkContainer>

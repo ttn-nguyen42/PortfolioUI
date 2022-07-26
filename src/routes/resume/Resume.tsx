@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Accordion } from 'react-bootstrap';
 import SkillCard from '../../components/card/SkillCard';
-import Navigation from '../../components/navbar/Navigation';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
