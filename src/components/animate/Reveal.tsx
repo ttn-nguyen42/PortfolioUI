@@ -5,22 +5,20 @@ import {
   reveal,
   whileInViewReveal,
 } from '../../utils/AnimatationVariant';
-import s from './PageTitle.module.scss';
 
-export default function PageTitle({ children }: PageTitleProps) {
+export default function Reveal({ children }: RevealProps) {
   return (
-    <motion.h2
+    <motion.div
+      viewport={{ once: true }}
       variants={reveal}
       initial={initialReveal}
       whileInView={whileInViewReveal}
-      viewport={{ once: true }}
-      className={s['title']}
     >
       {children}
-    </motion.h2>
+    </motion.div>
   );
 }
 
-export interface PageTitleProps {
-  children: React.ReactNode;
+export interface RevealProps {
+  children?: undefined | React.ReactNode | React.ReactNode[];
 }

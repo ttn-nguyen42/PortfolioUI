@@ -1,4 +1,6 @@
 import React from 'react';
+import Reveal from '../animate/Reveal';
+import Link from '../link/Link';
 import s from './Point.module.scss';
 
 export interface PointProps {
@@ -25,36 +27,43 @@ export default function Point({
 }: PointProps) {
   return (
     <>
-      <span className={s['title']}>{title}</span>
-      {note === null ? null : <span className={s['time']}>{' ' + note}</span>}
-      <div className={s['description-one']}>
-        <span>{descriptionOne}</span>
-      </div>
-      {descriptionTwo === null ? null : (
-        <div className={s['description-two']}>
-          <span>{descriptionTwo}</span>
-        </div>
+      <Reveal>
+        <span className={s['title']}>{title}</span>
+      </Reveal>
+      {note === undefined ? null : (
+        <Reveal>
+          <span className={s['time']}>{' ' + note}</span>
+        </Reveal>
       )}
-      {children === null ? null : (
-        <div
-          className={s['bullets'] + ' ' + (links === null ? '' : s['margin'])}
-        >
-          <ul>{children}</ul>
+      <Reveal>
+        <div className={s['description-one']}>
+          <span>{descriptionOne}</span>
         </div>
+      </Reveal>
+      {descriptionTwo === undefined ? null : (
+        <Reveal>
+          <div className={s['description-two']}>
+            <span>{descriptionTwo}</span>
+          </div>
+        </Reveal>
+      )}
+      {children === undefined ? null : (
+        <Reveal>
+          <div className={s['bullets']}>
+            <ul>{children}</ul>
+          </div>
+        </Reveal>
       )}
       {links === null || links === undefined || links.length === 0 ? null : (
         <div className={s['links']}>
           {links?.map((link: LinkPair) => (
-            <span>
-              {'['}
-              <a href={link.link} target='_blank' rel='noreferrer'>
-                {link.name}
-              </a>
-              {']'}
-            </span>
+            <Reveal>
+              <Link link={link} />
+            </Reveal>
           ))}
         </div>
       )}
+      <div className={s['bottom-margin']}></div>
     </>
   );
 }

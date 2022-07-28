@@ -1,12 +1,14 @@
 import s from './PagePoint.module.scss';
-import Point from '../page-point/PagePoint';
 import React from 'react';
+import Reveal from '../animate/Reveal';
 
 export default function PagePoint({ children, title }: PagePointProps) {
   return (
     <div className={s['point']}>
-      <h5 className={s['title']}>{title}</h5>
-      <hr className={s['divider']} />
+      <Reveal>
+        <h5 className={s['title']}>{title}</h5>
+        <hr className={s['divider']} />
+      </Reveal>
       {children}
     </div>
   );
