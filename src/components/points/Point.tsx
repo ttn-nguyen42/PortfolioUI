@@ -36,7 +36,9 @@ export default function Point({
         </div>
       )}
       {children === null ? null : (
-        <div className={s['bullets']}>
+        <div
+          className={s['bullets'] + ' ' + (links === null ? '' : s['margin'])}
+        >
           <ul>{children}</ul>
         </div>
       )}
@@ -45,7 +47,9 @@ export default function Point({
           {links?.map((link: LinkPair) => (
             <span>
               {'['}
-              <a href={link.link}>link.name</a>
+              <a href={link.link} target='_blank' rel='noreferrer'>
+                {link.name}
+              </a>
               {']'}
             </span>
           ))}

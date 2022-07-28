@@ -20,9 +20,12 @@
   margin-top: 0.5rem;
   ul {
     list-style-position: outside;
-    :not(:last-child) {
-      margin-bottom: 0.5rem;
-    }
+  }
+}
+
+.margin {
+  :not(:last-child) {
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -35,6 +38,7 @@
   flex-direction: row;
   justify-content: flex-start;
   gap: 0.5rem;
+  margin-bottom: 1.5rem;
   a {
     text-decoration: none;
   }

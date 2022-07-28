@@ -14,21 +14,7 @@
   @include tablet {
     display: flex;
     flex-direction: row;
-    gap: 5rem;
-    .info {
-      flex: 2.5;
-      align-self: flex-start;
-      position: sticky;
-      top: 0;
-    }
-    .content {
-      flex: 7.5;
-    }
-  }
-  @include desktop {
-    display: flex;
-    flex-direction: row;
-    gap: 5rem;
+    gap: 2rem;
     .info {
       flex: 2;
       align-self: flex-start;
@@ -37,6 +23,20 @@
     }
     .content {
       flex: 8;
+    }
+  }
+  @include desktop {
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+    .info {
+      flex: 2 0;
+      align-self: flex-start;
+      position: sticky;
+      top: 0;
+    }
+    .content {
+      flex: 8 0;
     }
   }
 }
