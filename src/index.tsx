@@ -9,7 +9,6 @@ import Posts from './routes/posts/Posts';
 import Activities from './routes/activities/Activities';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Contact from './routes/contact/Contact';
 
 import 'swiper/css';
 import 'swiper/css/scrollbar';
@@ -29,7 +28,6 @@ root.render(
         <Route path='/posts' element={<Posts />} />
         <Route path='/certificates' element={<Certificates />} />
         <Route path='/activities' element={<Activities />} />
-        <Route path='/contact' element={<Contact />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
