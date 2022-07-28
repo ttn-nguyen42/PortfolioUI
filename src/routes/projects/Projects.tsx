@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Alert } from 'react-bootstrap';
+import Reveal from '../../components/animate/Reveal';
 import Link from '../../components/link/Link';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
@@ -84,10 +85,12 @@ export default function Projects() {
           </Subpoint>
         </Point>
       </PagePoint>
-      <Alert variant='info'>
-        Smaller projects are available through my GitHub and GitLab
-        repositories, please check it out in the link below!
-      </Alert>
+      <Reveal>
+        <Alert variant='info'>
+          Smaller projects are available through my GitHub and GitLab
+          repositories, please check it out in the link below!
+        </Alert>
+      </Reveal>
       <div className={s['links']}>
         <Link
           link={{
