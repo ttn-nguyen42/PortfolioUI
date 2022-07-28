@@ -42,7 +42,7 @@ export default function Point({
           <ul>{children}</ul>
         </div>
       )}
-      {links === null ? null : (
+      {links === null || links === undefined || links.length === 0 ? null : (
         <div className={s['links']}>
           {links?.map((link: LinkPair) => (
             <span>

@@ -9,8 +9,8 @@
 }
 
 .body-wrapper {
-  margin-top: 2rem;
   margin-bottom: 2rem;
+  margin-top: 2rem;
   @include tablet {
     display: flex;
     flex-direction: row;
@@ -33,7 +33,7 @@
       flex: 2 0;
       align-self: flex-start;
       position: sticky;
-      top: 0;
+      top: 2rem;
     }
     .content {
       flex: 8 0;

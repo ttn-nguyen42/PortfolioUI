@@ -49,7 +49,7 @@ export default function Info() {
             </div>
             <span>Ho Chi Minh City, Vietnam</span>
           </div>
-          <div className={s['icon-pair']}>
+          <div className={s['icon-pair'] + ' mb-3'}>
             <div className={s['icon']}>
               <FontAwesomeIcon icon={faAt} />
             </div>
