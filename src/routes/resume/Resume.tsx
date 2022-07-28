@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { Accordion } from 'react-bootstrap';
+import Reveal from '../../components/animate/Reveal';
 import SkillCard from '../../components/card/SkillCard';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
@@ -17,134 +18,144 @@ export default function Resume() {
     <PageTemplate>
       <PageTitle>Resume</PageTitle>
       <PagePoint title={'Technical Skills'}>
-        <Accordion>
-          <Accordion.Item eventKey='0'>
-            <Accordion.Header>Back-end Development</Accordion.Header>
-            <Accordion.Body>
-              <div className={s['group']}>
-                <SkillCard
-                  level={5}
-                  language={'C#'}
-                  name={'ASP.NET Core Web API'}
-                  skills={[
-                    'MVC architecture and Repository pattern',
-                    'Entity Framework with Microsoft SQL & MySQL',
-                    'JWT authentication',
-                    'SignalR real-time API',
-                  ]}
-                />
-                <SkillCard
-                  level={5}
-                  language={'Java'}
-                  name={'Spring Boot'}
-                  skills={[
-                    'MVC architecture with Repository & Service pattern',
-                    'Hibernate & JPA with MySQL, PostgreSQL',
-                    'MongoDB with JPA',
-                    'OAuth 2.0 JWT authentication with Spring Security',
-                  ]}
-                />
-                <SkillCard
-                  level={2}
-                  language={'TypeScript'}
-                  name={'NestJS'}
-                  skills={[
-                    'MVC architecture with Repository & Service pattern',
-                    'TypeORM with MySQL',
-                    'Session-based authentication',
-                  ]}
-                />
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey='1'>
-            <Accordion.Header>Front-end Development</Accordion.Header>
-            <Accordion.Body>
-              <div className={s['group']}>
-                <SkillCard
-                  level={4}
-                  language={'TypeScript'}
-                  name={'React'}
-                  skills={[
-                    'Navigation with React Router',
-                    'State management with RxJS, MobX, Redux Toolkit',
-                    'Firebase Firestore integration',
-                    'HTTP with Fetch API or Axios',
-                    'Various UI libraries (MUI, Bootstrap, SwiperJS,...)',
-                  ]}
-                />
-                <SkillCard
-                  level={2}
-                  language={'TypeScript'}
-                  name={'Svelte & SvelteKit'}
-                  skills={[
-                    'Navigation with file-based routing',
-                    'HTTP with Fetch API or Axios',
-                  ]}
-                />
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey='2'>
-            <Accordion.Header>Mobile Development</Accordion.Header>
-            <Accordion.Body>
-              <div className={s['group']}>
-                <SkillCard
-                  language={'Dart'}
-                  level={5}
-                  name={'Flutter'}
-                  skills={[
-                    'Reactive programming with RxDart and BLoC',
-                    'Firebase Analytics and Firestore integration',
-                    'HTTP with Dio & Retrofit',
-                  ]}
-                />
-                <SkillCard
-                  language={'Kotlin & Java'}
-                  level={4}
-                  name={'Android'}
-                  skills={[
-                    'MVVM and MVC architecture',
-                    'Reactive programming with RxJava, Observer pattern',
-                    'Firebase Firestore integration',
-                    'HTTP with Retrofit, GJSON and Repository pattern',
-                  ]}
-                />
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey='3'>
-            <Accordion.Header>Others</Accordion.Header>
-            <Accordion.Body>
-              <div className={s['group']}>
-                <SkillCard
-                  level={null}
-                  language={'Management'}
-                  name={'Management Tools'}
-                  skills={[
-                    'Jira & Confluence',
-                    'Notion',
-                    'Slack, Microsoft Teams',
-                    'Messenger, Zoom, Google Meets',
-                  ]}
-                />
-                <SkillCard
-                  level={null}
-                  language={'Technical'}
-                  name={'Technical Tools'}
-                  skills={[
-                    'Git, GitHub, GitLab',
-                    'Zeplin, XD, Figma, Balsamiq',
-                    'Basic daily Linux usage (Ubuntu, Debian)',
-                    'Docker & Docker Compose',
-                    'VSCode, Visual Studio, JetBrains IDEs, Android Studio',
-                    'Google, Stack Overflow, Medium',
-                  ]}
-                />
-              </div>
-            </Accordion.Body>
-          </Accordion.Item>
-        </Accordion>
+        <Reveal>
+          <Accordion>
+            <Accordion.Item eventKey='0'>
+              <Reveal>
+                <Accordion.Header>Back-end Development</Accordion.Header>
+                <Accordion.Body>
+                  <div className={s['group']}>
+                    <SkillCard
+                      level={5}
+                      language={'C#'}
+                      name={'ASP.NET Core Web API'}
+                      skills={[
+                        'MVC architecture and Repository pattern',
+                        'Entity Framework with Microsoft SQL & MySQL',
+                        'JWT authentication',
+                        'SignalR real-time API',
+                      ]}
+                    />
+                    <SkillCard
+                      level={5}
+                      language={'Java'}
+                      name={'Spring Boot'}
+                      skills={[
+                        'MVC architecture with Repository & Service pattern',
+                        'Hibernate & JPA with MySQL, PostgreSQL',
+                        'MongoDB with JPA',
+                        'OAuth 2.0 JWT authentication with Spring Security',
+                      ]}
+                    />
+                    <SkillCard
+                      level={2}
+                      language={'TypeScript'}
+                      name={'NestJS'}
+                      skills={[
+                        'MVC architecture with Repository & Service pattern',
+                        'TypeORM with MySQL',
+                        'Session-based authentication',
+                      ]}
+                    />
+                  </div>
+                </Accordion.Body>
+              </Reveal>
+            </Accordion.Item>
+            <Accordion.Item eventKey='1'>
+              <Reveal>
+                <Accordion.Header>Front-end Development</Accordion.Header>
+                <Accordion.Body>
+                  <div className={s['group']}>
+                    <SkillCard
+                      level={4}
+                      language={'TypeScript'}
+                      name={'React'}
+                      skills={[
+                        'Navigation with React Router',
+                        'State management with RxJS, MobX, Redux Toolkit',
+                        'Firebase Firestore integration',
+                        'HTTP with Fetch API or Axios',
+                        'Various UI libraries (MUI, Bootstrap, SwiperJS,...)',
+                      ]}
+                    />
+                    <SkillCard
+                      level={2}
+                      language={'TypeScript'}
+                      name={'Svelte & SvelteKit'}
+                      skills={[
+                        'Navigation with file-based routing',
+                        'HTTP with Fetch API or Axios',
+                      ]}
+                    />
+                  </div>
+                </Accordion.Body>
+              </Reveal>
+            </Accordion.Item>
+            <Accordion.Item eventKey='2'>
+              <Reveal>
+                <Accordion.Header>Mobile Development</Accordion.Header>
+                <Accordion.Body>
+                  <div className={s['group']}>
+                    <SkillCard
+                      language={'Dart'}
+                      level={5}
+                      name={'Flutter'}
+                      skills={[
+                        'Reactive programming with RxDart and BLoC',
+                        'Firebase Analytics and Firestore integration',
+                        'HTTP with Dio & Retrofit',
+                      ]}
+                    />
+                    <SkillCard
+                      language={'Kotlin & Java'}
+                      level={4}
+                      name={'Android'}
+                      skills={[
+                        'MVVM and MVC architecture',
+                        'Reactive programming with RxJava, Observer pattern',
+                        'Firebase Firestore integration',
+                        'HTTP with Retrofit, GJSON and Repository pattern',
+                      ]}
+                    />
+                  </div>
+                </Accordion.Body>
+              </Reveal>
+            </Accordion.Item>
+            <Accordion.Item eventKey='3'>
+              <Reveal>
+                <Accordion.Header>Others</Accordion.Header>
+                <Accordion.Body>
+                  <div className={s['group']}>
+                    <SkillCard
+                      level={null}
+                      language={'Management'}
+                      name={'Management Tools'}
+                      skills={[
+                        'Jira & Confluence',
+                        'Notion',
+                        'Slack, Microsoft Teams',
+                        'Messenger, Zoom, Google Meets',
+                      ]}
+                    />
+                    <SkillCard
+                      level={null}
+                      language={'Technical'}
+                      name={'Technical Tools'}
+                      skills={[
+                        'Git, GitHub, GitLab',
+                        'Zeplin, XD, Figma, Balsamiq',
+                        'Basic daily Linux usage (Ubuntu, Debian)',
+                        'Docker & Docker Compose',
+                        'VSCode, Visual Studio, JetBrains IDEs, Android Studio',
+                        'Google, Stack Overflow, Medium',
+                      ]}
+                    />
+                  </div>
+                </Accordion.Body>
+              </Reveal>
+            </Accordion.Item>
+          </Accordion>
+        </Reveal>
       </PagePoint>
       <div style={{ marginBottom: '1.5rem' }} />
       <PagePoint title={'Experience'}>

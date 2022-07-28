@@ -1,4 +1,4 @@
-import { Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
+import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Logo from '../logo/Logo';
 
@@ -29,11 +29,6 @@ export default function Navigation() {
               </LinkContainer>
               <LinkContainer to={'/posts'}>
                 <Nav.Link>Posts</Nav.Link>
-              </LinkContainer>
-            </Nav>
-            <Nav>
-              <LinkContainer to={'/contact'}>
-                <Nav.Link>Contact me</Nav.Link>
               </LinkContainer>
             </Nav>
           </Nav>

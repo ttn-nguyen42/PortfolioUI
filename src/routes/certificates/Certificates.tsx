@@ -5,8 +5,6 @@ import PageTitle from '../../components/page-title/PageTitle';
 import Point from '../../components/points/Point';
 import Subpoint from '../../components/subpoints/Subpoint';
 
-import s from './Certificates.module.scss';
-
 export default function Certificates() {
   useEffect(() => {
     document.title = 'Certificates';

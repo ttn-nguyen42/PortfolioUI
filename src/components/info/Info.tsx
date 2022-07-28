@@ -13,6 +13,7 @@ import {
   faLinkedin,
 } from '@fortawesome/free-brands-svg-icons';
 import { Button } from 'react-bootstrap';
+import Reveal from '../animate/Reveal';
 
 export default function Info() {
   const openLink = (link: string) => {
@@ -21,90 +22,115 @@ export default function Info() {
   return (
     <div className={s['body']}>
       <section className={s['mobile']}>
-        <img src='./avatar.jpg' alt='Profile' className={s['profile']} />
-        <div className={s['name-and-bio']}>
-          <span className={s['name']}>Nguyen Tran</span>
-          <span className={s['bio']}>
-            3rd year Computer Engineering student. Interested in back-end and
-            mobile development.
-          </span>
-        </div>
-        <div className={s['linkedin-button']}>
-          <Button variant='outline-secondary' size='sm'>
-            <span>LinkedIn</span>
-          </Button>
-        </div>
+        <Reveal>
+          <img src='./avatar.jpg' alt='Profile' className={s['profile']} />
+        </Reveal>
+        <Reveal>
+          <div className={s['name-and-bio']}>
+            <span className={s['name']}>Nguyen Tran</span>
+            <span className={s['bio']}>
+              3rd year Computer Engineering student. Interested in back-end and
+              mobile development.
+            </span>
+          </div>
+        </Reveal>
+        <Reveal>
+          <div className={s['linkedin-button']}>
+            <Button variant='outline-secondary' size='sm'>
+              <span>LinkedIn</span>
+            </Button>
+          </div>
+        </Reveal>
       </section>
+
       <section className={s['desktop']}>
         <div className={s['center-and-left-align']}>
-          <img src='./avatar.jpg' alt='Profile' className={s['profile']} />
-          <h5 className={s['name']}>Nguyen Tran</h5>
-          <span className={s['bio']}>
-            3rd year Computer Engineering student. Interested in back-end and
-            mobile development.
-          </span>
-          <div className={s['icon-pair']}>
-            <div className={s['icon']}>
-              <FontAwesomeIcon icon={faLocationArrow} />
-            </div>
-            <span>Ho Chi Minh City, Vietnam</span>
-          </div>
-          <div className={s['icon-pair'] + ' mb-3'}>
-            <div className={s['icon']}>
-              <FontAwesomeIcon icon={faAt} />
-            </div>
-            <span>ttn.nguyen42@gmail.com</span>
-          </div>
-          <div className={s['icon-pair']}>
-            <div className={s['icon']}>
-              <FontAwesomeIcon icon={faGithub} />
-            </div>
-            <span
-              className={s['link']}
-              onClick={() => {
-                openLink('https://github.com');
-              }}
-            >
-              GitHub
+          <Reveal>
+            <img src='./avatar.jpg' alt='Profile' className={s['profile']} />
+          </Reveal>
+          <Reveal>
+            <h5 className={s['name']}>Nguyen Tran</h5>
+          </Reveal>
+          <Reveal>
+            <span className={s['bio']}>
+              3rd year Computer Engineering student. Interested in back-end and
+              mobile development.
             </span>
-          </div>
-          <div className={s['icon-pair']}>
-            <div className={s['icon']}>
-              <FontAwesomeIcon icon={faGitlab} />
+          </Reveal>
+          <Reveal>
+            <div className={s['icon-pair']}>
+              <div className={s['icon']}>
+                <FontAwesomeIcon icon={faLocationArrow} />
+              </div>
+              <span>Ho Chi Minh City, Vietnam</span>
             </div>
-            <span
-              className={s['link']}
-              onClick={() => {
-                openLink('https://github.com');
-              }}
-            >
-              GitLab
-            </span>
-          </div>
-          <div className={s['icon-pair']}>
-            <div
-              className={s['icon']}
-              onClick={() => {
-                openLink('https://github.com');
-              }}
-            >
-              <FontAwesomeIcon icon={faLinkedin} />
+          </Reveal>
+          <Reveal>
+            <div className={s['icon-pair'] + ' mb-3'}>
+              <div className={s['icon']}>
+                <FontAwesomeIcon icon={faAt} />
+              </div>
+              <span>ttn.nguyen42@gmail.com</span>
             </div>
-            <span className={s['link']}>LinkedIn</span>
-          </div>
-          <div className={s['icon-pair']}>
-            <div className={s['icon']}>
-              <FontAwesomeIcon icon={faSpider} />
+          </Reveal>
+          <Reveal>
+            <div className={s['icon-pair']}>
+              <div className={s['icon']}>
+                <FontAwesomeIcon icon={faGithub} />
+              </div>
+              <span
+                className={s['link']}
+                onClick={() => {
+                  openLink('https://github.com');
+                }}
+              >
+                GitHub
+              </span>
             </div>
-            <span
-              className={s['link']}
-              onClick={() => {
-                openLink('https://github.com');
-              }}
-            >
-              Spiderum
-            </span>
-          </div>
+          </Reveal>
+          <Reveal>
+            <div className={s['icon-pair']}>
+              <div className={s['icon']}>
+                <FontAwesomeIcon icon={faGitlab} />
+              </div>
+              <span
+                className={s['link']}
+                onClick={() => {
+                  openLink('https://github.com');
+                }}
+              >
+                GitLab
+              </span>
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className={s['icon-pair']}>
+              <div
+                className={s['icon']}
+                onClick={() => {
+                  openLink('https://github.com');
+                }}
+              >
+                <FontAwesomeIcon icon={faLinkedin} />
+              </div>
+              <span className={s['link']}>LinkedIn</span>
+            </div>
+          </Reveal>
+          <Reveal>
+            <div className={s['icon-pair']}>
+              <div className={s['icon']}>
+                <FontAwesomeIcon icon={faSpider} />
+              </div>
+              <span
+                className={s['link']}
+                onClick={() => {
+                  openLink('https://github.com');
+                }}
+              >
+                Spiderum
+              </span>
+            </div>
+          </Reveal>
         </div>
       </section>
     </div>

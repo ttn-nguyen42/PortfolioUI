@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
-import Navigation from '../../components/navbar/Navigation';
+import { Alert } from 'react-bootstrap';
+import Reveal from '../../components/animate/Reveal';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
-
-import s from './Posts.module.scss';
 
 export default function Posts() {
   useEffect(() => {
@@ -12,6 +11,9 @@ export default function Posts() {
   return (
     <PageTemplate>
       <PageTitle>Posts</PageTitle>
+      <Reveal>
+        <Alert variant='warning'>Coming soon!</Alert>
+      </Reveal>
     </PageTemplate>
   );
 }
