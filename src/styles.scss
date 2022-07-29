@@ -15,6 +15,25 @@ $footer-background: #f2f3f3;
   margin-top: auto;
 }
 
+@mixin fluid-padding {
+  @include mobile {
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
+  }
+  @include phablet {
+    padding-left: 5vw !important;
+    padding-right: 5vw !important;
+  }
+  @include tablet {
+    padding-left: 9vw !important;
+    padding-right: 9vw !important;
+  }
+  @include desktop {
+    padding-left: 15vw !important;
+    padding-right: 15vw !important;
+  }
+}
+
 $mobile-width: 480px;
 $tablet-width: 768px;
 $desktop-width: 1024px;

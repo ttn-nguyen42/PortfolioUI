@@ -1,17 +1,20 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { Link } from 'react-router-dom';
 import Logo from '../logo/Logo';
+
+import s from './Navigation.module.scss';
+import './Navigation.scss';
 
 export default function Navigation() {
   return (
     <Navbar bg='light' variant='light' expand='md'>
-      <Container>
-        <LinkContainer to={'/'}>
-          <Navbar.Brand>
-            <Logo />
-          </Navbar.Brand>
-        </LinkContainer>
-        <Navbar.Toggle aria-controls='offcanvas-navbar' />
+      <Container fluid className={s['container']}>
+        <Navbar.Brand as={Link} to={'/'}>
+          <Logo />
+        </Navbar.Brand>
+
+        <Navbar.Toggle aria-controls='responsive-navbar-nav' />
         <Navbar.Collapse id='responsive-navbar-nav'>
           <Nav className='justify-content-end flex-grow-1 pe-3'>
             <Nav className='me-auto'>
