@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
+import Reveal from '../../components/animate/Reveal';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
@@ -20,12 +21,7 @@ export default function About() {
   return (
     <PageTemplate>
       <PageTitle>About</PageTitle>
-      <motion.p
-        variants={reveal}
-        initial={initialReveal}
-        whileInView={whileInViewReveal}
-        viewport={{ once: true }}
-      >
+      <Reveal>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec sem
         libero. Quisque mattis ipsum id consequat hendrerit. Proin eget erat nec
         dolor blandit laoreet in in ex. Etiam vitae dapibus erat, in elementum
@@ -37,17 +33,11 @@ export default function About() {
         himenaeos. Vestibulum tellus arcu, dictum in varius vitae, aliquam ut
         dolor. Maecenas aliquam pharetra massa. Proin id sapien nisi. Cras
         blandit urna vitae dolor iaculis euismod sed eu enim.
-      </motion.p>
+      </Reveal>
       <PagePoint title={'Utilities'}>
-        <motion.div
-          variants={reveal}
-          initial={initialReveal}
-          whileInView={whileInViewReveal}
-          viewport={{ once: true }}
-          className={s['utilities']}
-        >
+        <Reveal>
           <Button variant='dark'>Download CV in PDF</Button>
-        </motion.div>
+        </Reveal>
       </PagePoint>
     </PageTemplate>
   );

@@ -1,20 +1,23 @@
 /*
  * Technical skills models
  */
-export interface TechnicalSkillGroup {
-  name: string;
-  skills: TechnicalSkill[];
-}
-
 export interface TechnicalSkill {
   language: string;
   name: string;
   proficiency?: number;
-  skills: Subskills[];
+  skills: TechnicalSkillDescription[];
+  type: TechnicalSkillType;
 }
 
-export interface Subskills {
-  name: string;
+export enum TechnicalSkillType {
+  BACKEND,
+  FRONTEND,
+  MOBILE,
+  OTHERS,
+}
+
+export interface TechnicalSkillDescription {
+  description: string;
 }
 
 /*
