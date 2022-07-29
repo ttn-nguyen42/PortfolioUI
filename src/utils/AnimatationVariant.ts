@@ -3,11 +3,11 @@ export const reveal = {
     opacity: 1,
     x: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.15,
       ease: 'circOut',
     },
   },
-  hidden: { opacity: 0, x: 70 },
+  hidden: { opacity: 0, x: 30 },
 };
 
 export const initialReveal = 'hidden';

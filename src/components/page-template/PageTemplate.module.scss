@@ -10,7 +10,12 @@
 
 .body-wrapper {
   margin-bottom: 2rem;
+  @include fluid-padding;
   margin-top: 2rem;
+  width: 100%;
+  @include mobile {
+    margin-top: 1.5rem;
+  }
   @include tablet {
     display: flex;
     flex-direction: row;
@@ -19,7 +24,7 @@
       flex: 2;
       align-self: flex-start;
       position: sticky;
-      top: 0;
+      top: 2rem;
     }
     .content {
       flex: 8;

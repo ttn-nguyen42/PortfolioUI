@@ -17,7 +17,6 @@ export interface ProjectDescription {
   description: string;
 }
 
-export enum ProjectType {
-  PROFESSIONAL,
-  PERSONAL,
+export interface ProjectType {
+  name: string;
 }

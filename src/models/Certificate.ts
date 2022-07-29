@@ -16,10 +16,6 @@ export interface CertificateDescription {
   description: string;
 }
 
-export enum CertificateType {
-  BACKEND,
-  FRONTEND,
-  MOBILE,
-  LANGUAGE,
-  OTHERS,
+export interface CertificateType {
+  name: string;
 }

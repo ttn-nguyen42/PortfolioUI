@@ -18,8 +18,6 @@ export interface ActivityDescription {
   description: string;
 }
 
-export enum ActivityType {
-  COMPETITIONS,
-  SOCIAL,
-  TALKS,
+export interface ActivityType {
+  name: string;
 }

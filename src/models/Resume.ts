@@ -9,11 +9,8 @@ export interface TechnicalSkill {
   type: TechnicalSkillType;
 }
 
-export enum TechnicalSkillType {
-  BACKEND,
-  FRONTEND,
-  MOBILE,
-  OTHERS,
+export interface TechnicalSkillType {
+  name: string;
 }
 
 export interface TechnicalSkillDescription {
