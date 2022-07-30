@@ -17,28 +17,32 @@ export default function Projects() {
   const [links, setLinks] = useState<ILinkPair[]>([]);
   const [profile, setProfile] = useState<any>({});
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean | null>(true);
 
   useEffect(() => {
     document.title = 'Projects';
     setLoading(true);
     const effect = async () => {
-      let projects = await getProjectData();
-      setProfile(await getInfoData());
-      setLinks(projects.repositories);
-      let classify: any = {};
-      projects.projects.forEach((project: IProject) => {
-        if (classify[project.type.name] === undefined) {
-          classify[project.type.name] = [project];
-        } else {
-          classify[project.type.name] = [
-            ...classify[project.type.name],
-            project,
-          ];
-        }
-      });
-      setInfo(classify);
-      setLoading(false);
+      try {
+        let projects = await getProjectData();
+        setProfile(await getInfoData());
+        setLinks(projects.repositories);
+        let classify: any = {};
+        projects.projects.forEach((project: IProject) => {
+          if (classify[project.type.name] === undefined) {
+            classify[project.type.name] = [project];
+          } else {
+            classify[project.type.name] = [
+              ...classify[project.type.name],
+              project,
+            ];
+          }
+        });
+        setInfo(classify);
+        setLoading(false);
+      } catch (e) {
+        setLoading(null);
+      }
     };
     effect();
   }, []);

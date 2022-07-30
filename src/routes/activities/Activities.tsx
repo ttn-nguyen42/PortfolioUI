@@ -12,28 +12,32 @@ export default function Activities() {
   const [categories, setCategories] = useState<any>({});
   const [profile, setProfile] = useState<any>({});
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean | null>(true);
 
   useEffect(() => {
     document.title = 'Activities';
     setLoading(true);
     const effect = async () => {
-      let activities = await getActivityData();
-      setProfile(await getInfoData());
-      let byCategories: any = {};
-      activities.activities.forEach((activity: IActivity) => {
-        if (byCategories[activity.type.name] !== undefined) {
-          byCategories[activity.type.name] = [
-            ...byCategories[activity.type.name],
-            activity,
-          ];
-        } else {
-          byCategories[activity.type.name] = [activity];
-        }
-      });
-      console.log(byCategories);
-      setCategories(byCategories);
-      setLoading(false);
+      try {
+        let activities = await getActivityData();
+        setProfile(await getInfoData());
+        let byCategories: any = {};
+        activities.activities.forEach((activity: IActivity) => {
+          if (byCategories[activity.type.name] !== undefined) {
+            byCategories[activity.type.name] = [
+              ...byCategories[activity.type.name],
+              activity,
+            ];
+          } else {
+            byCategories[activity.type.name] = [activity];
+          }
+        });
+        console.log(byCategories);
+        setCategories(byCategories);
+        setLoading(false);
+      } catch (e) {
+        setLoading(null);
+      }
     };
     effect();
   }, []);

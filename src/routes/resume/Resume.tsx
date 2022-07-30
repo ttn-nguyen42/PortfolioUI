@@ -32,31 +32,35 @@ export default function Resume() {
 
   const [profile, setProfile] = useState<any>({});
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean | null>(true);
 
   useEffect(() => {
+    document.title = 'Resume';
+    setLoading(true);
     const effect = async () => {
-      document.title = 'Resume';
-      setLoading(true);
-      let resumeData = await getResumeData();
-      setProfile(await getInfoData());
-      let classifyTechnical: any = {};
-      resumeData.skills.forEach((skill: ITechnicalSkill) => {
-        if (classifyTechnical[skill.type.name] === undefined) {
-          classifyTechnical[skill.type.name] = [skill];
-        } else {
-          classifyTechnical[skill.type.name] = [
-            ...classifyTechnical[skill.type.name],
-            skill,
-          ];
-        }
-      });
-      setExperience(resumeData.experience);
-      setTechnical(classifyTechnical);
-      setEducation(resumeData.education);
-      setVolunteer(resumeData.volunteering);
-      setQualifications(resumeData.qualification);
-      setLoading(false);
+      try {
+        let resumeData = await getResumeData();
+        setProfile(await getInfoData());
+        let classifyTechnical: any = {};
+        resumeData.skills.forEach((skill: ITechnicalSkill) => {
+          if (classifyTechnical[skill.type.name] === undefined) {
+            classifyTechnical[skill.type.name] = [skill];
+          } else {
+            classifyTechnical[skill.type.name] = [
+              ...classifyTechnical[skill.type.name],
+              skill,
+            ];
+          }
+        });
+        setExperience(resumeData.experience);
+        setTechnical(classifyTechnical);
+        setEducation(resumeData.education);
+        setVolunteer(resumeData.volunteering);
+        setQualifications(resumeData.qualification);
+        setLoading(false);
+      } catch (e) {
+        setLoading(null);
+      }
     };
     effect();
   }, []);

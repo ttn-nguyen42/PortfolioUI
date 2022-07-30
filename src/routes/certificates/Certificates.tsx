@@ -14,24 +14,28 @@ import { getCertificateData, getInfoData } from '../../network/HttpRepository';
 export default function Certificates() {
   const [info, setInfo] = useState<any>({});
   const [profile, setProfile] = useState<any>({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean | null>(true);
 
   useEffect(() => {
     document.title = 'Certificates';
     setLoading(true);
     const effect = async () => {
-      let certificates = await getCertificateData();
-      setProfile(await getInfoData());
-      let classify: any = {};
-      certificates.certificates.forEach((cert: ICertificate) => {
-        if (classify[cert.type.name] === undefined) {
-          classify[cert.type.name] = [cert];
-        } else {
-          classify[cert.type.name] = [...classify[cert.type.name], cert];
-        }
-      });
-      setInfo(classify);
-      setLoading(false);
+      try {
+        let certificates = await getCertificateData();
+        setProfile(await getInfoData());
+        let classify: any = {};
+        certificates.certificates.forEach((cert: ICertificate) => {
+          if (classify[cert.type.name] === undefined) {
+            classify[cert.type.name] = [cert];
+          } else {
+            classify[cert.type.name] = [...classify[cert.type.name], cert];
+          }
+        });
+        setInfo(classify);
+        setLoading(false);
+      } catch (e) {
+        setLoading(null);
+      }
     };
     effect();
   }, []);

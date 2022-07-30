@@ -14,7 +14,6 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { Button } from 'react-bootstrap';
 import Reveal from '../animate/Reveal';
-import { useEffect } from 'react';
 import IInfo from '../../models/Info';
 import { ILinkPair } from '../points/Point';
 

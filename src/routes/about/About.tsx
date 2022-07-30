@@ -9,16 +9,20 @@ import { getAboutData, getInfoData } from '../../network/HttpRepository';
 export default function About() {
   const [aboutInfo, setInfo] = useState<any>({});
   const [profile, setProfile] = useState<any>({});
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean | null>(true);
 
   useEffect(() => {
     document.title = 'About';
     setLoading(true);
     const effect = async () => {
-      let bio = await getAboutData();
-      setProfile(await getInfoData());
-      setInfo(bio);
-      setLoading(false);
+      try {
+        let bio = await getAboutData();
+        setProfile(await getInfoData());
+        setInfo(bio);
+        setLoading(false);
+      } catch (e) {
+        setLoading(null);
+      }
     };
     effect();
   }, []);
