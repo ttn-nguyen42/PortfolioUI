@@ -49,23 +49,23 @@ export default function SkillCard({
             >
               <FontAwesomeIcon
                 icon={faStar}
-                color={level >= 1 ? '' : '#aebcc9'}
+                color={level! >= 1 ? '' : '#aebcc9'}
               />
               <FontAwesomeIcon
                 icon={faStar}
-                color={level >= 2 ? '' : '#aebcc9'}
+                color={level! >= 2 ? '' : '#aebcc9'}
               />
               <FontAwesomeIcon
                 icon={faStar}
-                color={level >= 3 ? '' : '#aebcc9'}
+                color={level! >= 3 ? '' : '#aebcc9'}
               />
               <FontAwesomeIcon
                 icon={faStar}
-                color={level >= 4 ? '' : '#aebcc9'}
+                color={level! >= 4 ? '' : '#aebcc9'}
               />
               <FontAwesomeIcon
                 icon={faStar}
-                color={level >= 5 ? '' : '#aebcc9'}
+                color={level! >= 5 ? '' : '#aebcc9'}
               />
               <OverlayTrigger
                 key='overlay'
@@ -92,7 +92,7 @@ export default function SkillCard({
 
 export interface SkillCardProps {
   language: string;
-  level: 1 | 2 | 3 | 4 | 5 | null;
+  level: number | null;
   name: string;
   skills: string[];
 }

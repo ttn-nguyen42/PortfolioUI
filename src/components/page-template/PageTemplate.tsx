@@ -1,4 +1,5 @@
 import React from 'react';
+import { Spinner } from 'react-bootstrap';
 import Footer from '../footer/Footer';
 import Info from '../info/Info';
 import Navigation from '../navbar/Navigation';
@@ -10,20 +11,25 @@ export default function PageTemplate({ children, loading }: PageTemplateProps) {
     <>
       <section className={s['wrapper']}>
         <Navigation />
-        {loading === true ? <div></div> : null}
-        {loading === false || loading === undefined ? (
-          <>
-            <div className={s['body-wrapper']}>
+
+        <div className={s['body-wrapper']}>
+          {loading === false || loading === undefined ? (
+            <>
               <div className={s['info']}>
                 <Info />
               </div>
               <div className={s['content']}>{children}</div>
+            </>
+          ) : null}
+          {loading === true ? (
+            <div className={s['spinner']}>
+              <Spinner variant='dark' animation='grow' />
             </div>
-            <div className={s['footer']}>
-              <Footer />
-            </div>
-          </>
-        ) : null}
+          ) : null}
+        </div>
+        <div className={s['footer']}>
+          <Footer />
+        </div>
       </section>
     </>
   );

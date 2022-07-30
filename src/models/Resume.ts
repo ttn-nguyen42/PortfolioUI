@@ -4,7 +4,7 @@
 export interface TechnicalSkill {
   language: string;
   name: string;
-  proficiency?: number;
+  proficiency: number | null;
   skills: TechnicalSkillDescription[];
   type: TechnicalSkillType;
 }
@@ -40,8 +40,12 @@ export interface Education {
   major: string;
   from: string;
   to: string;
+  descriptions: EducationDescription[];
+  average: number | null;
+}
+
+export interface EducationDescription {
   description: string;
-  average: number;
 }
 
 /*
@@ -62,10 +66,10 @@ export interface VolunteeringDescription {
 /*
  * Qualification models
  */
-export interface Qualifications {
+export interface Qualification {
   name: string;
   issuer: string;
-  score?: number;
+  score: number | null;
   descriptions: QualificationDescription[];
 }
 

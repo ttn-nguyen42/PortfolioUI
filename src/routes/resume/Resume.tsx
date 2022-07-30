@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Accordion } from 'react-bootstrap';
 import Reveal from '../../components/animate/Reveal';
 import SkillCard from '../../components/card/SkillCard';
@@ -7,287 +7,463 @@ import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
 import Point from '../../components/points/Point';
 import Subpoint from '../../components/subpoints/Subpoint';
+import {
+  Education,
+  EducationDescription,
+  Experience,
+  ExperienceDescription,
+  Qualification,
+  QualificationDescription,
+  TechnicalSkill,
+  TechnicalSkillDescription,
+  Volunteering,
+  VolunteeringDescription,
+} from '../../models/Resume';
 
 import s from './Resume.module.scss';
 
+const technicalSkills: TechnicalSkill[] = [
+  {
+    language: 'C#',
+    name: 'ASP.NET Core Web API',
+    proficiency: 5,
+    skills: [
+      { description: 'MVC architecture and Repository pattern' },
+      { description: 'Entity Framework with Microsoft SQL & MySQL' },
+      { description: 'JWT authentication' },
+      { description: 'SignalR real-time API' },
+    ],
+    type: {
+      name: 'Back-end Development',
+    },
+  },
+  {
+    language: 'Java',
+    name: 'Spring Boot',
+    proficiency: 5,
+    skills: [
+      { description: 'MVC architecture with Repository & Service pattern' },
+      { description: 'Hibernate & JPA with MySQL, PostgreSQL' },
+      { description: 'MongoDB with JPA' },
+      { description: 'OAuth 2.0 JWT authentication with Spring Security' },
+    ],
+    type: {
+      name: 'Back-end Development',
+    },
+  },
+  {
+    language: 'TypeScript',
+    name: 'NestJS',
+    proficiency: 2,
+    skills: [
+      { description: 'MVC architecture with Repository & Service pattern' },
+      { description: 'TypeORM with MySQL' },
+      { description: 'Session-based authentication' },
+    ],
+    type: {
+      name: 'Back-end Development',
+    },
+  },
+  {
+    language: 'TypeScript',
+    name: 'React',
+    proficiency: 4,
+    skills: [
+      { description: 'Navigation with React Router' },
+      { description: 'State management with RxJS, MobX, Redux Toolkit' },
+      { description: 'Firebase Firestore integration' },
+      { description: 'HTTP with Fetch API or Axios' },
+      { description: 'Various UI libraries (MUI, Bootstrap, SwiperJS,...)' },
+    ],
+    type: {
+      name: 'Front-end Development',
+    },
+  },
+  {
+    language: 'TypeScript',
+    name: 'Svelte & SvelteKit',
+    proficiency: 2,
+    skills: [
+      { description: 'Navigation with file-based routing' },
+      { description: 'HTTP with Fetch API or Axios' },
+    ],
+    type: {
+      name: 'Front-end Development',
+    },
+  },
+  {
+    language: 'Dart',
+    name: 'Flutter',
+    proficiency: 5,
+    skills: [
+      { description: 'Reactive programming with RxDart and BLoC' },
+      { description: 'Firebase Analytics and Firestore integration' },
+      { description: 'HTTP with Dio & Retrofit' },
+    ],
+    type: {
+      name: 'Mobile Development',
+    },
+  },
+  {
+    language: 'Kotlin & Java',
+    name: 'Android',
+    proficiency: 3,
+    skills: [
+      { description: 'MVVM and MVC architecture' },
+      { description: 'Reactive programming with RxJava, Observer pattern' },
+      { description: 'Firebase Firestore integration' },
+      { description: 'HTTP with Retrofit, GJSON and Repository pattern' },
+    ],
+    type: {
+      name: 'Mobile Development',
+    },
+  },
+  {
+    language: 'Management',
+    name: 'Management Tools',
+    proficiency: null,
+    skills: [
+      { description: 'Jira & Confluence' },
+      { description: 'Notion' },
+      { description: 'Slack, Microsoft Teams' },
+      { description: 'Messenger, Zoom, Google Meets' },
+    ],
+    type: {
+      name: 'Others',
+    },
+  },
+
+  {
+    language: 'Technical',
+    name: 'Technical Tools',
+    proficiency: null,
+    skills: [
+      { description: 'Git, GitHub, GitLab' },
+      { description: 'Zeplin, XD, Figma, Balsamiq' },
+      { description: 'Basic daily Linux usage (Ubuntu, Debian)' },
+      { description: 'Docker & Docker Compose' },
+      { description: 'VSCode, Visual Studio, JetBrains IDEs, Android Studio' },
+      { description: 'Google, Stack Overflow, Medium' },
+    ],
+    type: {
+      name: 'Others',
+    },
+  },
+];
+
+const experiencesModel: Experience[] = [
+  {
+    title: 'Mobile Engineer',
+    company: 'BENIT',
+    from: 'Dec 2021',
+    to: 'Jun 2022',
+    descriptions: [
+      {
+        description: 'Develop mobile applications using Flutter & Dart',
+      },
+      {
+        description:
+          'Participate in full Agile development cycles, feature planning and UI design process',
+      },
+    ],
+  },
+  {
+    title: 'ESL (English as a Second Language) Teacher',
+    company: 'Lingo English Center',
+    from: 'Mar 2021',
+    to: 'Nov 2021',
+    descriptions: [
+      {
+        description: 'Help students prepare for the IELTS examination',
+      },
+      {
+        description:
+          'Taught communication English for students from all backgrounds (engineers, teachers,...)',
+      },
+    ],
+  },
+];
+
+const educationsModel: Education[] = [
+  {
+    school: 'Ho Chi Minh City University of Technology',
+    major: 'Bachelor (BSc) in Computer Engineering',
+    from: '2020',
+    to: '2024',
+    descriptions: [
+      {
+        description:
+          'Major in Software Engineering and Internet of Things Development',
+      },
+    ],
+    average: 7.63,
+  },
+  {
+    school: 'Chu Van An High School',
+    major: 'International A-Level Program',
+    from: '2017',
+    to: '2020',
+    descriptions: [
+      {
+        description:
+          'Studied A-Level Mathematics, Physics, Chemistry and Economics',
+      },
+    ],
+    average: null,
+  },
+];
+
+const volunteeringModel: Volunteering[] = [
+  {
+    title: 'Associate Assistant',
+    organization: 'Chu Van An High School Library',
+    from: 'Nov 2017',
+    to: 'Jul 2020',
+    descriptions: [
+      { description: 'Maintain the library computer systems' },
+      {
+        description:
+          "Write social media posts for the club's various social activities & events",
+      },
+      {
+        description:
+          'Perform frequent updates for the library management system',
+      },
+      { description: 'Organize and operate events by the library' },
+    ],
+  },
+  {
+    title: 'Media Specialist',
+    organization: 'OISP Volunteer Club',
+    from: 'Nov 2021',
+    to: 'now',
+    descriptions: [
+      {
+        description:
+          'Participate in multiple planning of social activities of the club',
+      },
+      {
+        description:
+          "Write social media posts for the club's various social activities & events",
+      },
+    ],
+  },
+  {
+    title: 'Team Leader',
+    organization: 'High School Help Kit',
+    from: 'Nov 2020',
+    to: 'Mar 2022',
+    descriptions: [
+      {
+        description:
+          'Write academic articles for secondary school students to revise for the national examination',
+      },
+      {
+        description: 'Deliver monthly plans for the team',
+      },
+      {
+        description: 'Provide supports and advise for team members',
+      },
+    ],
+  },
+];
+
+const qualificationsModel: Qualification[] = [
+  {
+    name: 'IELTS',
+    issuer: 'IDP Vietnam',
+    score: 7.0,
+    descriptions: [
+      { description: 'Reading & Listening: 7.5' },
+      { description: 'Writing & Speaking: 6.5' },
+    ],
+  },
+];
+
 export default function Resume() {
+  const [technical, setTechnical] = useState<any>({});
+  const [experiences, setExperience] = useState<Experience[]>([]);
+  const [educations, setEducation] = useState<Education[]>([]);
+  const [volunteer, setVolunteer] = useState<Volunteering[]>([]);
+  const [qualifications, setQualifications] = useState<Qualification[]>([]);
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     document.title = 'Resume';
-  });
-  return (
-    <PageTemplate>
-      <PageTitle>Resume</PageTitle>
-      <PagePoint title={'Technical Skills'}>
-        <Reveal>
-          <Accordion>
-            <Accordion.Item eventKey='0'>
-              <Reveal>
-                <Accordion.Header>Back-end Development</Accordion.Header>
-                <Accordion.Body>
-                  <div className={s['group']}>
-                    <SkillCard
-                      level={5}
-                      language={'C#'}
-                      name={'ASP.NET Core Web API'}
-                      skills={[
-                        'MVC architecture and Repository pattern',
-                        'Entity Framework with Microsoft SQL & MySQL',
-                        'JWT authentication',
-                        'SignalR real-time API',
-                      ]}
-                    />
-                    <SkillCard
-                      level={5}
-                      language={'Java'}
-                      name={'Spring Boot'}
-                      skills={[
-                        'MVC architecture with Repository & Service pattern',
-                        'Hibernate & JPA with MySQL, PostgreSQL',
-                        'MongoDB with JPA',
-                        'OAuth 2.0 JWT authentication with Spring Security',
-                      ]}
-                    />
-                    <SkillCard
-                      level={2}
-                      language={'TypeScript'}
-                      name={'NestJS'}
-                      skills={[
-                        'MVC architecture with Repository & Service pattern',
-                        'TypeORM with MySQL',
-                        'Session-based authentication',
-                      ]}
-                    />
-                  </div>
-                </Accordion.Body>
-              </Reveal>
-            </Accordion.Item>
-            <Accordion.Item eventKey='1'>
-              <Reveal>
-                <Accordion.Header>Front-end Development</Accordion.Header>
-                <Accordion.Body>
-                  <div className={s['group']}>
-                    <SkillCard
-                      level={4}
-                      language={'TypeScript'}
-                      name={'React'}
-                      skills={[
-                        'Navigation with React Router',
-                        'State management with RxJS, MobX, Redux Toolkit',
-                        'Firebase Firestore integration',
-                        'HTTP with Fetch API or Axios',
-                        'Various UI libraries (MUI, Bootstrap, SwiperJS,...)',
-                      ]}
-                    />
-                    <SkillCard
-                      level={2}
-                      language={'TypeScript'}
-                      name={'Svelte & SvelteKit'}
-                      skills={[
-                        'Navigation with file-based routing',
-                        'HTTP with Fetch API or Axios',
-                      ]}
-                    />
-                  </div>
-                </Accordion.Body>
-              </Reveal>
-            </Accordion.Item>
-            <Accordion.Item eventKey='2'>
-              <Reveal>
-                <Accordion.Header>Mobile Development</Accordion.Header>
-                <Accordion.Body>
-                  <div className={s['group']}>
-                    <SkillCard
-                      language={'Dart'}
-                      level={5}
-                      name={'Flutter'}
-                      skills={[
-                        'Reactive programming with RxDart and BLoC',
-                        'Firebase Analytics and Firestore integration',
-                        'HTTP with Dio & Retrofit',
-                      ]}
-                    />
-                    <SkillCard
-                      language={'Kotlin & Java'}
-                      level={4}
-                      name={'Android'}
-                      skills={[
-                        'MVVM and MVC architecture',
-                        'Reactive programming with RxJava, Observer pattern',
-                        'Firebase Firestore integration',
-                        'HTTP with Retrofit, GJSON and Repository pattern',
-                      ]}
-                    />
-                  </div>
-                </Accordion.Body>
-              </Reveal>
-            </Accordion.Item>
-            <Accordion.Item eventKey='3'>
-              <Reveal>
-                <Accordion.Header>Others</Accordion.Header>
-                <Accordion.Body>
-                  <div className={s['group']}>
-                    <SkillCard
-                      level={null}
-                      language={'Management'}
-                      name={'Management Tools'}
-                      skills={[
-                        'Jira & Confluence',
-                        'Notion',
-                        'Slack, Microsoft Teams',
-                        'Messenger, Zoom, Google Meets',
-                      ]}
-                    />
-                    <SkillCard
-                      level={null}
-                      language={'Technical'}
-                      name={'Technical Tools'}
-                      skills={[
-                        'Git, GitHub, GitLab',
-                        'Zeplin, XD, Figma, Balsamiq',
-                        'Basic daily Linux usage (Ubuntu, Debian)',
-                        'Docker & Docker Compose',
-                        'VSCode, Visual Studio, JetBrains IDEs, Android Studio',
-                        'Google, Stack Overflow, Medium',
-                      ]}
-                    />
-                  </div>
-                </Accordion.Body>
-              </Reveal>
-            </Accordion.Item>
-          </Accordion>
-        </Reveal>
-      </PagePoint>
-      <div style={{ marginBottom: '1.5rem' }} />
-      <PagePoint title={'Experience'}>
-        <Point
-          title={'Mobile Engineer'}
-          descriptionOne={'BENIT'}
-          note={'Dec 2021 - Jun 2022'}
-        >
-          <Subpoint>
-            <span>{'Develop mobile applications using Flutter & Dart'}</span>
-          </Subpoint>
-          <Subpoint>
-            <span>
-              {
-                'Participate in full Agile development cycles, feature planning and UI design process'
-              }
-            </span>
-          </Subpoint>
-        </Point>
-        <Point
-          title={'ESL (English as a Second Language) Teacher'}
-          descriptionOne={'Lingo English Center'}
-          note={'Mar 2021 - Nov 2021'}
-        >
-          <Subpoint>
-            <span>Help students prepare for the IELTS examination</span>
-          </Subpoint>
-          <Subpoint>
-            <span>
-              {
-                'Taught communication English for students from all backgrounds (engineers, teachers,...)'
-              }
-            </span>
-          </Subpoint>
-        </Point>
-      </PagePoint>
-      <PagePoint title={'Education'}>
-        <Point
-          title={'Ho Chi Minh City University of Technology'}
-          descriptionOne={'Bachelor (BSc) in Computer Engineering'}
-          note={'2020 - 2024'}
-        >
-          <Subpoint>
-            <span>
-              Major in Software Engineering and Internet of Things Development
-            </span>
-          </Subpoint>
-          <Subpoint>
-            <span>cGPA of 7.63/10</span>
-          </Subpoint>
-        </Point>
-        <Point
-          title={'Chu Van An High School'}
-          descriptionOne={'International A-Level Program'}
-          note={'2017 - 2020'}
-        >
-          <Subpoint>
-            <span>
-              Studied A-Level Mathematics, Physics, Chemistry and Economics
-            </span>
-          </Subpoint>
-        </Point>
-      </PagePoint>
+    setLoading(true);
+    // Fetch from API
+    let classifyTechnical: any = {};
+    technicalSkills.forEach((skill: TechnicalSkill) => {
+      if (classifyTechnical[skill.type.name] === undefined) {
+        classifyTechnical[skill.type.name] = [skill];
+      } else {
+        classifyTechnical[skill.type.name] = [
+          ...classifyTechnical[skill.type.name],
+          skill,
+        ];
+      }
+    });
+    setExperience(experiencesModel);
+    setTechnical(classifyTechnical);
+    setEducation(educationsModel);
+    setVolunteer(volunteeringModel);
+    setQualifications(qualificationsModel);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, []);
 
-      <PagePoint title={'Volunteering'}>
-        <Point
-          title={'Associate Assistant'}
-          descriptionOne={'Chu Van An High School Library'}
-          note={'Nov 2017 - Jul 2020'}
-        >
-          <Subpoint>
-            <span>{'Maintain the library computer systems'}</span>
-          </Subpoint>
-          <Subpoint>
-            <span>
-              {'Perform frequent updates for the library management system'}
-            </span>
-          </Subpoint>
-          <Subpoint>
-            <span>{'Organize and operate events by the library'}</span>
-          </Subpoint>
-        </Point>
-        <Point
-          title={'Media Specialist'}
-          descriptionOne={'OISP Volunteer Club'}
-          note={'Nov 2021 - now'}
-        >
-          <Subpoint>
-            <span>
-              {
-                "Write social media posts for the club's various social activities & events"
-              }
-            </span>
-          </Subpoint>
-          <Subpoint>
-            <span>
-              {
-                'Participate in multiple planning of social activities of the club'
-              }
-            </span>
-          </Subpoint>
-        </Point>
-        <Point
-          title={'Team Leader'}
-          descriptionOne={'High School Help Kit'}
-          note={'Feb 2020 - Mar 2022'}
-        >
-          <Subpoint>
-            <span>
-              {
-                'Write academic articles for secondary school students to revise for the national examination'
-              }
-            </span>
-          </Subpoint>
-          <Subpoint>
-            <span>{'Deliver monthly plans for the team'}</span>
-          </Subpoint>
-          <Subpoint>
-            <span>{'Provide supports and advise for team members'}</span>
-          </Subpoint>
-        </Point>
-      </PagePoint>
-      <PagePoint title={'Qualifications'}>
-        <Point title={'IELTS'} descriptionOne={'IDP Vietnam'} note={'7.0'}>
-          <Subpoint>
-            <span>{'Reading & Listening: 7.5'}</span>
-          </Subpoint>
-          <Subpoint>
-            <span>{'Writing & Speaking: 6.5'}</span>
-          </Subpoint>
-        </Point>
-      </PagePoint>
+  return (
+    <PageTemplate loading={loading}>
+      <PageTitle>Resume</PageTitle>
+      <Reveal>
+        <PagePoint title={'Technical Skills'}>
+          <Reveal>
+            <Accordion>
+              {Object.keys(technical).map((key: string, index: number) => {
+                return (
+                  <Accordion.Item eventKey={index.toString()}>
+                    <Reveal>
+                      <Accordion.Header>{key}</Accordion.Header>
+                      <Accordion.Body>
+                        <div className={s['group']}>
+                          {technical[key].map((skill: TechnicalSkill) => {
+                            return (
+                              <Reveal>
+                                <SkillCard
+                                  language={skill.language}
+                                  level={skill.proficiency}
+                                  name={skill.name}
+                                  skills={skill.skills.map(
+                                    (desc: TechnicalSkillDescription) => {
+                                      return desc.description;
+                                    }
+                                  )}
+                                />
+                              </Reveal>
+                            );
+                          })}
+                        </div>
+                      </Accordion.Body>
+                    </Reveal>
+                  </Accordion.Item>
+                );
+              })}
+            </Accordion>
+          </Reveal>
+        </PagePoint>
+      </Reveal>
+      <div style={{ marginBottom: '1.5rem' }} />
+      <Reveal>
+        <PagePoint title={'Experience'}>
+          {experiences.map((experience: Experience) => {
+            return (
+              <Reveal>
+                <Point
+                  title={experience.title}
+                  descriptionOne={experience.company}
+                  note={`${experience.from} - ${experience.to}`}
+                >
+                  {experience.descriptions.map(
+                    (desc: ExperienceDescription) => {
+                      return (
+                        <Reveal>
+                          <Subpoint>
+                            <span>{desc.description}</span>
+                          </Subpoint>
+                        </Reveal>
+                      );
+                    }
+                  )}
+                </Point>
+              </Reveal>
+            );
+          })}
+        </PagePoint>
+      </Reveal>
+      <Reveal>
+        <PagePoint title={'Education'}>
+          {educations.map((education: Education) => {
+            return (
+              <Reveal>
+                <Point
+                  title={education.school}
+                  descriptionOne={education.major}
+                  note={`${education.from} - ${education.to}`}
+                >
+                  {education.descriptions.map((desc: EducationDescription) => {
+                    return (
+                      <Reveal>
+                        <Subpoint>
+                          <span>{desc.description}</span>
+                        </Subpoint>
+                      </Reveal>
+                    );
+                  })}
+                  {education.average === null ? null : (
+                    <Reveal>
+                      <Subpoint>
+                        <span>{`GPA of ${education.average.toString}`}</span>
+                      </Subpoint>
+                    </Reveal>
+                  )}
+                </Point>
+              </Reveal>
+            );
+          })}
+        </PagePoint>
+      </Reveal>
+      <Reveal>
+        <PagePoint title={'Volunteering'}>
+          {volunteer.map((act: Volunteering) => {
+            return (
+              <Reveal>
+                <Point
+                  title={act.title}
+                  descriptionOne={act.organization}
+                  note={`${act.from} - ${act.to}`}
+                >
+                  {act.descriptions.map((desc: VolunteeringDescription) => {
+                    return (
+                      <Reveal>
+                        <Subpoint>
+                          <span>{desc.description}</span>
+                        </Subpoint>
+                      </Reveal>
+                    );
+                  })}
+                </Point>
+              </Reveal>
+            );
+          })}
+        </PagePoint>
+      </Reveal>
+      <Reveal>
+        <PagePoint title={'Qualifications'}>
+          {qualifications.map((qual: Qualification) => {
+            return (
+              <Reveal>
+                <Point
+                  title={qual.name}
+                  descriptionOne={qual.issuer}
+                  note={qual.score?.toFixed(1).toString()}
+                >
+                  {qual.descriptions.map((desc: QualificationDescription) => {
+                    return (
+                      <Reveal>
+                        <Subpoint>
+                          <span>{desc.description}</span>
+                        </Subpoint>
+                      </Reveal>
+                    );
+                  })}
+                </Point>
+              </Reveal>
+            );
+          })}
+        </PagePoint>
+      </Reveal>
     </PageTemplate>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Reveal from '../../components/animate/Reveal';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
@@ -28,7 +29,9 @@ export default function Activities() {
     });
     console.log(byCategories);
     setCategories(byCategories);
-    setLoading(false);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   }, []);
 
   return (
@@ -37,27 +40,35 @@ export default function Activities() {
       {Object.keys(categories).map((key: string) => {
         console.log(key);
         return (
-          <PagePoint title={key}>
-            {categories[key].map((activity: Activity) => {
-              return (
-                <Point
-                  title={activity.name}
-                  note={activity.time}
-                  descriptionTwo={activity.overview}
-                  descriptionOne={activity.organizer}
-                  links={activity.links}
-                >
-                  {activity.descriptions.map((desc: ActivityDescription) => {
-                    return (
-                      <Subpoint>
-                        <span>{desc.description}</span>
-                      </Subpoint>
-                    );
-                  })}
-                </Point>
-              );
-            })}
-          </PagePoint>
+          <Reveal>
+            <PagePoint title={key}>
+              {categories[key].map((activity: Activity) => {
+                return (
+                  <Reveal>
+                    <Point
+                      title={activity.name}
+                      note={activity.time}
+                      descriptionTwo={activity.overview}
+                      descriptionOne={activity.organizer}
+                      links={activity.links}
+                    >
+                      {activity.descriptions.map(
+                        (desc: ActivityDescription) => {
+                          return (
+                            <Reveal>
+                              <Subpoint>
+                                <span>{desc.description}</span>
+                              </Subpoint>
+                            </Reveal>
+                          );
+                        }
+                      )}
+                    </Point>
+                  </Reveal>
+                );
+              })}
+            </PagePoint>
+          </Reveal>
         );
       })}
     </PageTemplate>
