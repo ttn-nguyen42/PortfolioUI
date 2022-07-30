@@ -1,22 +1,28 @@
-import { LinkPair } from '../components/points/Point';
+import { ILinkPair } from '../components/points/Point';
 
 /*
  * Project models
  */
-export default interface Project {
+
+export default interface IProjectList {
+  projects: IProject[];
+  repositories: ILinkPair[];
+}
+
+export interface IProject {
   name: string;
   role: string;
   team: string;
   overview: string;
-  descriptions: ProjectDescription[];
-  links: LinkPair[];
-  type: ProjectType;
+  descriptions: IProjectDescription[];
+  links: ILinkPair[];
+  type: IProjectType;
 }
 
-export interface ProjectDescription {
+export interface IProjectDescription {
   description: string;
 }
 
-export interface ProjectType {
+export interface IProjectType {
   name: string;
 }

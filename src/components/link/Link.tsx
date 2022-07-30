@@ -1,5 +1,5 @@
 import Reveal from '../animate/Reveal';
-import { LinkPair } from '../points/Point';
+import { ILinkPair } from '../points/Point';
 
 import s from './Link.module.scss';
 
@@ -18,5 +18,5 @@ export default function Link({ link }: LinkComponentInterface) {
 }
 
 export interface LinkComponentInterface {
-  link: LinkPair;
+  link: ILinkPair;
 }

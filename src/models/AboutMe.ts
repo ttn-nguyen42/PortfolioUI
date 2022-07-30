@@ -1,6 +1,6 @@
 /*
  * About me models
  */
-export default interface AboutMe {
+export default interface IAbout {
   biography: string;
 }

@@ -14,11 +14,15 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { Button } from 'react-bootstrap';
 import Reveal from '../animate/Reveal';
+import { useEffect } from 'react';
+import IInfo from '../../models/Info';
+import { ILinkPair } from '../points/Point';
 
-export default function Info() {
+export default function Info({ info }: InfoProps) {
   const openLink = (link: string) => {
     window.open(link, '_blank', 'noopener,noreferrer');
   };
+
   return (
     <div className={s['body']}>
       <section className={s['mobile']}>
@@ -27,11 +31,8 @@ export default function Info() {
         </Reveal>
         <Reveal>
           <div className={s['name-and-bio']}>
-            <span className={s['name']}>Nguyen Tran</span>
-            <span className={s['bio']}>
-              3rd year Computer Engineering student. Interested in back-end and
-              mobile development.
-            </span>
+            <span className={s['name']}>{info.name}</span>
+            <span className={s['bio']}>{info.shortBiography}</span>
           </div>
         </Reveal>
         <Reveal>
@@ -49,20 +50,17 @@ export default function Info() {
             <img src='./avatar.jpg' alt='Profile' className={s['profile']} />
           </Reveal>
           <Reveal>
-            <h5 className={s['name']}>Nguyen Tran</h5>
+            <h5 className={s['name']}>{info.name}</h5>
           </Reveal>
           <Reveal>
-            <span className={s['bio']}>
-              3rd year Computer Engineering student. Interested in back-end and
-              mobile development.
-            </span>
+            <span className={s['bio']}>{info.shortBiography}</span>
           </Reveal>
           <Reveal>
             <div className={s['icon-pair']}>
               <div className={s['icon']}>
                 <FontAwesomeIcon icon={faLocationArrow} />
               </div>
-              <span>Ho Chi Minh City, Vietnam</span>
+              <span>{info.location}</span>
             </div>
           </Reveal>
           <Reveal>
@@ -70,7 +68,7 @@ export default function Info() {
               <div className={s['icon']}>
                 <FontAwesomeIcon icon={faAt} />
               </div>
-              <span>ttn.nguyen42@gmail.com</span>
+              <span>{info.email}</span>
             </div>
           </Reveal>
           <Reveal>
@@ -81,7 +79,12 @@ export default function Info() {
               <span
                 className={s['link']}
                 onClick={() => {
-                  openLink('https://github.com');
+                  let link = info.links.find(
+                    (val: ILinkPair) => val.name === 'GitHub'
+                  )?.link;
+                  if (link !== undefined) {
+                    openLink(link!);
+                  }
                 }}
               >
                 GitHub
@@ -96,7 +99,12 @@ export default function Info() {
               <span
                 className={s['link']}
                 onClick={() => {
-                  openLink('https://github.com');
+                  let link = info.links.find(
+                    (val: ILinkPair) => val.name === 'GitLab'
+                  )?.link;
+                  if (link !== undefined) {
+                    openLink(link!);
+                  }
                 }}
               >
                 GitLab
@@ -108,7 +116,12 @@ export default function Info() {
               <div
                 className={s['icon']}
                 onClick={() => {
-                  openLink('https://github.com');
+                  let link = info.links.find(
+                    (val: ILinkPair) => val.name === 'LinkedIn'
+                  )?.link;
+                  if (link !== undefined) {
+                    openLink(link!);
+                  }
                 }}
               >
                 <FontAwesomeIcon icon={faLinkedin} />
@@ -124,7 +137,12 @@ export default function Info() {
               <span
                 className={s['link']}
                 onClick={() => {
-                  openLink('https://github.com');
+                  let link = info.links.find(
+                    (val: ILinkPair) => val.name === 'Spiderum'
+                  )?.link;
+                  if (link !== undefined) {
+                    openLink(link!);
+                  }
                 }}
               >
                 Spiderum
@@ -135,4 +153,8 @@ export default function Info() {
       </section>
     </div>
   );
+}
+
+export interface InfoProps {
+  info: IInfo;
 }

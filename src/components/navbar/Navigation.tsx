@@ -30,9 +30,6 @@ export default function Navigation() {
               <LinkContainer to={'/activities'}>
                 <Nav.Link>Activities</Nav.Link>
               </LinkContainer>
-              <LinkContainer to={'/posts'}>
-                <Nav.Link>Posts</Nav.Link>
-              </LinkContainer>
             </Nav>
           </Nav>
         </Navbar.Collapse>

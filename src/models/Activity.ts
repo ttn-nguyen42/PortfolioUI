@@ -2,22 +2,26 @@
  * Activities model
  */
 
-import { LinkPair } from '../components/points/Point';
+import { ILinkPair } from '../components/points/Point';
 
-export default interface Activity {
+export default interface IActivityList {
+  activities: IActivity[];
+}
+
+export interface IActivity {
   name: string;
   time: string;
   organizer: string;
   overview: string;
-  descriptions: ActivityDescription[];
-  links: LinkPair[];
-  type: ActivityType;
+  descriptions: IActivityDescription[];
+  links: ILinkPair[];
+  type: IActivityType;
 }
 
-export interface ActivityDescription {
+export interface IActivityDescription {
   description: string;
 }
 
-export interface ActivityType {
+export interface IActivityType {
   name: string;
 }

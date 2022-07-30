@@ -1,12 +1,12 @@
-import { LinkPair } from '../components/points/Point';
+import { ILinkPair } from '../components/points/Point';
 
 /*
  * Info model
  */
-export default interface Info {
+export default interface IInfo {
   name: string;
   shortBiography: string;
   location: string;
   email: string;
-  links: LinkPair[];
+  links: ILinkPair[];
 }

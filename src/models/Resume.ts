@@ -1,78 +1,89 @@
 /*
+ * Resume models
+ */
+export interface IResume {
+  skills: ITechnicalSkill[];
+  experience: IExperience[];
+  education: IEducation[];
+  volunteering: IVolunteering[];
+  qualification: IQualification[];
+}
+
+/*
  * Technical skills models
  */
-export interface TechnicalSkill {
+export interface ITechnicalSkill {
   language: string;
   name: string;
   proficiency: number | null;
-  skills: TechnicalSkillDescription[];
-  type: TechnicalSkillType;
+  skills: ITechnicalSkillDescription[];
+  type: ITechnicalSkillType;
 }
 
-export interface TechnicalSkillType {
+export interface ITechnicalSkillType {
   name: string;
 }
 
-export interface TechnicalSkillDescription {
+export interface ITechnicalSkillDescription {
   description: string;
 }
 
 /*
  * Experience models
  */
-export interface Experience {
+export interface IExperience {
   title: string;
   company: string;
   from: string;
   to: string;
-  descriptions: ExperienceDescription[];
+  descriptions: IExperienceDescription[];
 }
 
-export interface ExperienceDescription {
+export interface IExperienceDescription {
   description: string;
 }
 
 /*
  * Education models
  */
-export interface Education {
+export interface IEducation {
   school: string;
   major: string;
   from: string;
   to: string;
-  descriptions: EducationDescription[];
+  descriptions: IEducationDescription[];
   average: number | null;
 }
 
-export interface EducationDescription {
+export interface IEducationDescription {
   description: string;
 }
 
 /*
  * Volunteering models
  */
-export interface Volunteering {
+export interface IVolunteering {
   title: string;
   organization: string;
   from: string;
   to: string;
-  descriptions: VolunteeringDescription[];
+  descriptions: IVolunteeringDescription[];
 }
 
-export interface VolunteeringDescription {
+export interface IVolunteeringDescription {
   description: string;
 }
 
 /*
  * Qualification models
  */
-export interface Qualification {
+export interface IQualification {
   name: string;
   issuer: string;
   score: number | null;
-  descriptions: QualificationDescription[];
+  descriptions: IQualificationDescription[];
 }
 
-export interface QualificationDescription {
+export interface IQualificationDescription {
   description: string;
 }

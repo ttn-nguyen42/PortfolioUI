@@ -1,22 +1,26 @@
-import { LinkPair } from '../components/points/Point';
+import { ILinkPair } from '../components/points/Point';
 
 /*
  * Certificate model
  */
-export default interface Certificate {
+export default interface ICertificateList {
+  certificates: ICertificate[];
+}
+
+export interface ICertificate {
   name: string;
   time: string;
   issuer: string;
   instructor: string;
-  descriptions: CertificateDescription[];
-  links: LinkPair[];
-  type: CertificateType;
+  descriptions: ICertificateDescription[];
+  links: ILinkPair[];
+  type: ICertificateType;
 }
 
-export interface CertificateDescription {
+export interface ICertificateDescription {
   description: string;
 }
 
-export interface CertificateType {
+export interface ICertificateType {
   name: string;
 }

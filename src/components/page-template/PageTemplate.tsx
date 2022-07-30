@@ -1,12 +1,17 @@
 import React from 'react';
 import { Spinner } from 'react-bootstrap';
+import IInfo from '../../models/Info';
 import Footer from '../footer/Footer';
 import Info from '../info/Info';
 import Navigation from '../navbar/Navigation';
 
 import s from './PageTemplate.module.scss';
 
-export default function PageTemplate({ children, loading }: PageTemplateProps) {
+export default function PageTemplate({
+  children,
+  loading,
+  info,
+}: PageTemplateProps) {
   return (
     <>
       <section className={s['wrapper']}>
@@ -16,7 +21,7 @@ export default function PageTemplate({ children, loading }: PageTemplateProps) {
           {loading === false || loading === undefined ? (
             <>
               <div className={s['info']}>
-                <Info />
+                <Info info={info} />
               </div>
               <div className={s['content']}>{children}</div>
             </>
@@ -38,4 +43,5 @@ export default function PageTemplate({ children, loading }: PageTemplateProps) {
 export interface PageTemplateProps {
   children: React.ReactNode;
   loading?: boolean;
+  info: IInfo;
 }

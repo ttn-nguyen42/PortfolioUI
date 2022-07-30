@@ -9,10 +9,10 @@ export interface PointProps {
   note?: string;
   descriptionOne: string;
   descriptionTwo?: string;
-  links?: LinkPair[];
+  links?: ILinkPair[];
 }
 
-export interface LinkPair {
+export interface ILinkPair {
   name: string;
   link: string;
 }
@@ -56,7 +56,7 @@ export default function Point({
       )}
       {links === null || links === undefined || links.length === 0 ? null : (
         <div className={s['links']}>
-          {links?.map((link: LinkPair) => (
+          {links?.map((link: ILinkPair) => (
             <Reveal>
               <Link link={link} />
             </Reveal>
