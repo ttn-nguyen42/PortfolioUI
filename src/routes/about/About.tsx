@@ -4,16 +4,10 @@ import Reveal from '../../components/animate/Reveal';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
+import AboutMe from '../../models/AboutMe';
 
-export default function About() {
-  const [aboutInfo, setInfo] = useState<any>({});
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    document.title = 'About';
-    setLoading(true);
-    setInfo({
-      biography: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec sem
+const bio: AboutMe = {
+  biography: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec sem
         libero. Quisque mattis ipsum id consequat hendrerit. Proin eget erat nec
         dolor blandit laoreet in in ex. Etiam vitae dapibus erat, in elementum
         ipsum. Fusce efficitur, velit eget auctor gravida, nulla velit rhoncus
@@ -24,8 +18,19 @@ export default function About() {
         himenaeos. Vestibulum tellus arcu, dictum in varius vitae, aliquam ut
         dolor. Maecenas aliquam pharetra massa. Proin id sapien nisi. Cras
         blandit urna vitae dolor iaculis euismod sed eu enim.`,
-    });
-    setLoading(false);
+};
+
+export default function About() {
+  const [aboutInfo, setInfo] = useState<any>({});
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    document.title = 'About';
+    setLoading(true);
+    setInfo(bio);
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
   }, []);
 
   return (

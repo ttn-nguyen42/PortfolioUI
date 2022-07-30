@@ -9,7 +9,8 @@ export default interface Certificate {
   issuer: string;
   instructor: string;
   descriptions: CertificateDescription[];
-  links: LinkPair;
+  links: LinkPair[];
+  type: CertificateType;
 }
 
 export interface CertificateDescription {
