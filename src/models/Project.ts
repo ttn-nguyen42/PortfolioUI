@@ -6,7 +6,6 @@ import { ILinkPair } from '../components/points/Point';
 
 export default interface IProjectList {
   projects: IProject[];
-  repositories: ILinkPair[];
 }
 
 export interface IProject {

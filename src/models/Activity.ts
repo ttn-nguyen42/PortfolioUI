@@ -10,7 +10,6 @@ export default interface IActivityList {
 
 export interface IActivity {
   name: string;
-  time: string;
   organizer: string;
   overview: string;
   descriptions: IActivityDescription[];

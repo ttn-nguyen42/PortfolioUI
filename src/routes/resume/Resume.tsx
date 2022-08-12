@@ -40,6 +40,10 @@ export default function Resume() {
     const effect = async () => {
       try {
         let resumeData = await getResumeData();
+        if (resumeData === null) {
+          setLoading(null);
+          return;
+        }
         setProfile(await getInfoData());
         let classifyTechnical: any = {};
         resumeData.skills.forEach((skill: ITechnicalSkill) => {

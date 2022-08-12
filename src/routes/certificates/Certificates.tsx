@@ -22,6 +22,10 @@ export default function Certificates() {
     const effect = async () => {
       try {
         let certificates = await getCertificateData();
+        if (certificates === null) {
+          setLoading(null);
+          return;
+        }
         setProfile(await getInfoData());
         let classify: any = {};
         certificates.certificates.forEach((cert: ICertificate) => {

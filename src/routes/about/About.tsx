@@ -4,7 +4,11 @@ import Reveal from '../../components/animate/Reveal';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
-import { getAboutData, getInfoData } from '../../network/HttpRepository';
+import {
+  getAboutData,
+  getInfoData,
+  getResumeFileLink,
+} from '../../network/HttpRepository';
 
 export default function About() {
   const [aboutInfo, setInfo] = useState<any>({});
@@ -17,6 +21,10 @@ export default function About() {
     const effect = async () => {
       try {
         let bio = await getAboutData();
+        if (bio === null) {
+          setLoading(null);
+          return;
+        }
         setProfile(await getInfoData());
         setInfo(bio);
         setLoading(false);
@@ -33,7 +41,9 @@ export default function About() {
       <Reveal>{aboutInfo.biography}</Reveal>
       <PagePoint title={'Utilities'}>
         <Reveal>
-          <Button variant='dark'>Download CV in PDF</Button>
+          <Button as='a' href={getResumeFileLink()} download variant='dark'>
+            Download CV in PDF
+          </Button>
         </Reveal>
       </PagePoint>
     </PageTemplate>

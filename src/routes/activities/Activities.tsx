@@ -20,6 +20,10 @@ export default function Activities() {
     const effect = async () => {
       try {
         let activities = await getActivityData();
+        if (activities === null) {
+          setLoading(null);
+          return;
+        }
         setProfile(await getInfoData());
         let byCategories: any = {};
         activities.activities.forEach((activity: IActivity) => {
@@ -55,7 +59,6 @@ export default function Activities() {
                   <Reveal>
                     <Point
                       title={activity.name}
-                      note={activity.time}
                       descriptionTwo={activity.overview}
                       descriptionOne={activity.organizer}
                       links={activity.links}

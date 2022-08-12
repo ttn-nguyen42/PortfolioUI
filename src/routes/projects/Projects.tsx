@@ -14,7 +14,6 @@ import s from './Projects.module.scss';
 
 export default function Projects() {
   const [info, setInfo] = useState<any>({});
-  const [links, setLinks] = useState<ILinkPair[]>([]);
   const [profile, setProfile] = useState<any>({});
 
   const [loading, setLoading] = useState<boolean | null>(true);
@@ -25,8 +24,11 @@ export default function Projects() {
     const effect = async () => {
       try {
         let projects = await getProjectData();
+        if (projects === null) {
+          setLoading(null);
+          return;
+        }
         setProfile(await getInfoData());
-        setLinks(projects.repositories);
         let classify: any = {};
         projects.projects.forEach((project: IProject) => {
           if (classify[project.type.name] === undefined) {
@@ -84,18 +86,9 @@ export default function Projects() {
       <Reveal>
         <Alert variant='info'>
           Smaller projects are available through my GitHub and GitLab
-          repositories, please check it out in the link below!
+          repositories, please check it out in the links to the left!
         </Alert>
       </Reveal>
-      <div className={s['links']}>
-        {links.map((link: ILinkPair) => {
-          return (
-            <Reveal>
-              <Link link={link} />
-            </Reveal>
-          );
-        })}
-      </div>
     </PageTemplate>
   );
 }

@@ -16,6 +16,7 @@ import { Button } from 'react-bootstrap';
 import Reveal from '../animate/Reveal';
 import IInfo from '../../models/Info';
 import { ILinkPair } from '../points/Point';
+import { getAvatarLink } from '../../network/HttpRepository';
 
 export default function Info({ info }: InfoProps) {
   const openLink = (link: string) => {
@@ -26,7 +27,7 @@ export default function Info({ info }: InfoProps) {
     <div className={s['body']}>
       <section className={s['mobile']}>
         <Reveal>
-          <img src='./avatar.jpg' alt='Profile' className={s['profile']} />
+          <img src={getAvatarLink()} alt='Profile' className={s['profile']} />
         </Reveal>
         <Reveal>
           <div className={s['name-and-bio']}>
@@ -46,7 +47,7 @@ export default function Info({ info }: InfoProps) {
       <section className={s['desktop']}>
         <div className={s['center-and-left-align']}>
           <Reveal>
-            <img src='./avatar.jpg' alt='Profile' className={s['profile']} />
+            <img src={getAvatarLink()} alt='Profile' className={s['profile']} />
           </Reveal>
           <Reveal>
             <h5 className={s['name']}>{info.name}</h5>
