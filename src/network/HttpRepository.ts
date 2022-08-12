@@ -10,11 +10,11 @@ import http from './AxiosFactory';
 export const ID: string = process.env['REACT_APP_PROFILE_ID']!;
 
 export const getAvatarLink = (): string => {
-  return `${process.env['REACT_APP_FILE_URL']}/${ID}/avatar.jpg`;
+  return `${process.env['REACT_APP_FILE_URL']}/${ID}/${process.env['REACT_APP_AVATAR_FILENAME']}`;
 };
 
 export const getResumeFileLink = (): string => {
-  return `${process.env['REACT_APP_FILE_URL']}/${ID}/resume.pdf`;
+  return `${process.env['REACT_APP_FILE_URL']}/${ID}/${process.env['REACT_APP_RESUME_FILENAME']}`;
 };
 
 export const getResumeData = async (): Promise<IResume | null> => {
