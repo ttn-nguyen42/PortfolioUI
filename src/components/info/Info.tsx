@@ -37,7 +37,18 @@ export default function Info({ info }: InfoProps) {
         </Reveal>
         <Reveal>
           <div className={s['linkedin-button']}>
-            <Button variant='outline-secondary' size='sm'>
+            <Button
+              variant='outline-secondary'
+              size='sm'
+              onClick={() => {
+                let link = info.links.find(
+                  (val: ILinkPair) => val.name === 'LinkedIn'
+                )?.link;
+                if (link !== undefined) {
+                  openLink(link!);
+                }
+              }}
+            >
               <span>LinkedIn</span>
             </Button>
           </div>

@@ -66,7 +66,7 @@ export interface IVolunteering {
   title: string;
   organization: string;
   from: string;
-  to: string;
+  to: string | null;
   descriptions: IVolunteeringDescription[];
 }
 

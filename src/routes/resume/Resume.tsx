@@ -145,7 +145,9 @@ export default function Resume() {
                 <Point
                   title={education.school}
                   descriptionOne={education.major}
-                  note={`${education.from} - ${education.to}`}
+                  note={`${education.from.split('/')[1]} - ${
+                    education.to.split('/')[1]
+                  }`}
                 >
                   {education.descriptions.map((desc: IEducationDescription) => {
                     return (
@@ -159,7 +161,7 @@ export default function Resume() {
                   {education.average === null ? null : (
                     <Reveal>
                       <Subpoint>
-                        <span>{`GPA of ${education.average.toString}`}</span>
+                        <span>{`GPA of ${education.average.toString()}`}</span>
                       </Subpoint>
                     </Reveal>
                   )}
@@ -177,7 +179,7 @@ export default function Resume() {
                 <Point
                   title={act.title}
                   descriptionOne={act.organization}
-                  note={`${act.from} - ${act.to}`}
+                  note={`${act.from} - ${act.to ?? 'now'}`}
                 >
                   {act.descriptions.map((desc: IVolunteeringDescription) => {
                     return (
