@@ -86,8 +86,24 @@ export default function Projects() {
       <Reveal>
         <Alert variant='info'>
           Smaller projects are available through my GitHub and GitLab
-          repositories, please check it out in the links to the left!
+          repositories, please check it out down below
         </Alert>
+        <Reveal>
+          <div className={s['links']}>
+            <Link
+              link={{
+                name: 'GitHub',
+                link: 'https://github.com/ttn-nguyen42',
+              }}
+            />
+            <Link
+              link={{
+                name: 'GitLab',
+                link: 'https://gitlab.com/ttn-nguyen42',
+              }}
+            />
+          </div>
+        </Reveal>
       </Reveal>
     </PageTemplate>
   );
