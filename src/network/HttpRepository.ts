@@ -1,4 +1,3 @@
-import axios from 'axios';
 import IAbout from '../models/AboutMe';
 import IActivityList, { IActivity } from '../models/Activity';
 import ICertificateList, { ICertificate } from '../models/Certificate';

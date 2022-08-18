@@ -31,6 +31,9 @@ export default function Navigation() {
                 <Nav.Link>Activities</Nav.Link>
               </LinkContainer>
             </Nav>
+            <Nav.Link href='https://blog.ttng.tech' target='_blank'>
+              Blog
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

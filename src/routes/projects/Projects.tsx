@@ -5,7 +5,7 @@ import Link from '../../components/link/Link';
 import PagePoint from '../../components/page-point/PagePoint';
 import PageTemplate from '../../components/page-template/PageTemplate';
 import PageTitle from '../../components/page-title/PageTitle';
-import Point, { ILinkPair } from '../../components/points/Point';
+import Point from '../../components/points/Point';
 import Subpoint from '../../components/subpoints/Subpoint';
 import { IProject, IProjectDescription } from '../../models/Project';
 import { getInfoData, getProjectData } from '../../network/HttpRepository';
